@@ -77,6 +77,20 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Dev
 	return New(transport, formats)
 }
 
+// NewHTTPClientWithConfig creates a new device42 HTTP client,
+// using a customizable transport config and auth.
+func NewHTTPClientWithConfigAndAuth(formats strfmt.Registry, cfg *TransportConfig, username, password string) *Device42 {
+	// ensure nullable parameters have default
+	if cfg == nil {
+		cfg = DefaultTransportConfig()
+	}
+
+	// create transport and client
+	transport := httptransport.New(cfg.Host, cfg.BasePath, cfg.Schemes)
+	transport.DefaultAuthentication = httptransport.BasicAuth(username, password)
+	return New(transport, formats)
+}
+
 // New creates a new device42 client
 func New(transport runtime.ClientTransport, formats strfmt.Registry) *Device42 {
 	// ensure nullable parameters have default
