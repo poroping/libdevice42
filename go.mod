@@ -1,4 +1,4 @@
-module github.com/mjpitz/libdevice42
+module github.com/poroping/libdevice42
 
 go 1.13
 

@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/mjpitz/libdevice42/models"
+	"github.com/poroping/libdevice42/models"
 )
 
 // PostMultiSerialDeviceReader is a Reader for the PostMultiSerialDevice structure.

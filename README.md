@@ -10,8 +10,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/mjpitz/libdevice42/client"
-	"github.com/mjpitz/libdevice42/client/devices"
+	"github.com/poroping/libdevice42/client"
+	"github.com/poroping/libdevice42/client/devices"
 	"log"
 )
 

@@ -2,18 +2,19 @@ package main
 
 import (
 	"fmt"
-	"github.com/mjpitz/libdevice42/client"
-	"github.com/mjpitz/libdevice42/client/devices"
-	httptransport "github.com/go-openapi/runtime/client"
 	"log"
 	"os"
+
+	httptransport "github.com/go-openapi/runtime/client"
+	"github.com/poroping/libdevice42/client"
+	"github.com/poroping/libdevice42/client/devices"
 )
 
 func main() {
 	d42 := client.NewHTTPClientWithConfig(nil, &client.TransportConfig{
-		Host: "api.device42.com",
+		Host:     "api.device42.com",
 		BasePath: "/",
-		Schemes: []string{"https"},
+		Schemes:  []string{"https"},
 	})
 
 	auth := httptransport.BasicAuth(os.Getenv("DEVICE42_USERNAME"), os.Getenv("DEVICE42_PASSWORD"))

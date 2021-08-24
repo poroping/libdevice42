@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/mjpitz/libdevice42/models"
+	"github.com/poroping/libdevice42/models"
 )
 
 // GetHistoryNumberOfWeeksReader is a Reader for the GetHistoryNumberOfWeeks structure.

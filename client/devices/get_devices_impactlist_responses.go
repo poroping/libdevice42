@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/mjpitz/libdevice42/models"
+	"github.com/poroping/libdevice42/models"
 )
 
 // GetDevicesImpactlistReader is a Reader for the GetDevicesImpactlist structure.
