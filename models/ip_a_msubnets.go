@@ -85,7 +85,7 @@ type IPAMsubnets struct {
 	SubnetID interface{} `json:"subnet_id,omitempty"`
 
 	// tags
-	Tags interface{} `json:"tags,omitempty"`
+	Tags []string `json:"tags,omitempty"`
 
 	// vrf group id
 	VrfGroupID interface{} `json:"vrf_group_id,omitempty"`

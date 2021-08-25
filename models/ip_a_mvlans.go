@@ -34,7 +34,7 @@ type IPAMvlans struct {
 	Switches []*IPAMvlansSwitchesItems0 `json:"switches"`
 
 	// tags
-	Tags interface{} `json:"tags,omitempty"`
+	Tags []string `json:"tags,omitempty"`
 
 	// vlan id
 	VlanID interface{} `json:"vlan_id,omitempty"`
