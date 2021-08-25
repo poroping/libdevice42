@@ -133,6 +133,16 @@ type PostIPAMsubnetsParams struct {
 
 	*/
 	ServiceLevel *string
+	/*SubnetID
+	  Subnet ID of the subnet.
+
+	*/
+	SubnetID *string
+	/*Tags
+	  Tags of the subnet.
+
+	*/
+	Tags *string
 	/*VrfGroup
 	  VRF group name
 
@@ -367,6 +377,28 @@ func (o *PostIPAMsubnetsParams) WithServiceLevel(serviceLevel *string) *PostIPAM
 // SetServiceLevel adds the serviceLevel to the post IP a msubnets params
 func (o *PostIPAMsubnetsParams) SetServiceLevel(serviceLevel *string) {
 	o.ServiceLevel = serviceLevel
+}
+
+// WithSubnetID adds the subnetID to the post IP a msubnets params
+func (o *PostIPAMsubnetsParams) WithSubnetID(subnetID *string) *PostIPAMsubnetsParams {
+	o.SetSubnetID(subnetID)
+	return o
+}
+
+// SetSubnetID adds the subnetID to the post IP a msubnets params
+func (o *PostIPAMsubnetsParams) SetSubnetID(subnetID *string) {
+	o.SubnetID = subnetID
+}
+
+// WithTags adds the Tags to the post IP a msubnets params
+func (o *PostIPAMsubnetsParams) WithTags(tags *string) *PostIPAMsubnetsParams {
+	o.SetTags(tags)
+	return o
+}
+
+// SetTags adds the vrfGroupId to the post IP a msubnets params
+func (o *PostIPAMsubnetsParams) SetTags(tags *string) {
+	o.Tags = tags
 }
 
 // WithVrfGroup adds the vrfGroup to the post IP a msubnets params
@@ -651,6 +683,38 @@ func (o *PostIPAMsubnetsParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		fServiceLevel := frServiceLevel
 		if fServiceLevel != "" {
 			if err := r.SetFormParam("service_level", fServiceLevel); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.SubnetID != nil {
+
+		// form param subnet_id
+		var frSubnetID string
+		if o.SubnetID != nil {
+			frSubnetID = *o.SubnetID
+		}
+		fSubnetID := frSubnetID
+		if fSubnetID != "" {
+			if err := r.SetFormParam("subnet_id", fSubnetID); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Tags != nil {
+
+		// form param tags
+		var frTags string
+		if o.Tags != nil {
+			frTags = *o.Tags
+		}
+		fTags := frTags
+		if fTags != "" {
+			if err := r.SetFormParam("tags", fTags); err != nil {
 				return err
 			}
 		}
