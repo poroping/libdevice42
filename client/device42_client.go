@@ -6,11 +6,9 @@ package client
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"crypto/tls"
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"net/http"
 
 	"github.com/poroping/libdevice42/client/admin_users_groups"
 	"github.com/poroping/libdevice42/client/application_components"
@@ -76,26 +74,6 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Dev
 
 	// create transport and client
 	transport := httptransport.New(cfg.Host, cfg.BasePath, cfg.Schemes)
-	return New(transport, formats)
-}
-
-// NewHTTPClientWithConfig creates a new device42 HTTP client,
-// using a customizable transport config and auth.
-func NewHTTPClientWithConfigAndAuth(formats strfmt.Registry, cfg *TransportConfig, username, password, useragent string, verify bool) *Device42 {
-	// ensure nullable parameters have default
-	if cfg == nil {
-		cfg = DefaultTransportConfig()
-	}
-
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: verify},
-	}
-	httpClient := &http.Client{Transport: tr}
-
-	// create transport and client
-	transport := httptransport.NewWithClient(cfg.Host, cfg.BasePath, cfg.Schemes, httpClient)
-	transport.DefaultAuthentication = httptransport.BasicAuth(username, password)
-	transport.Transport = SetUserAgent(transport.Transport, useragent)
 	return New(transport, formats)
 }
 
