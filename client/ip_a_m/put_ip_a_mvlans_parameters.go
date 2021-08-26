@@ -90,6 +90,11 @@ type PutIPAMvlansParams struct {
 
 	*/
 	SwitchID *string
+	/*Tags
+	  Tags of the subnet.
+
+	*/
+	Tags *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -206,6 +211,17 @@ func (o *PutIPAMvlansParams) SetSwitchID(switchID *string) {
 	o.SwitchID = switchID
 }
 
+// WithTags adds the tags to the put IP a mvlans params
+func (o *PutIPAMvlansParams) WithTags(tags *string) *PutIPAMvlansParams {
+	o.SetTags(tags)
+	return o
+}
+
+// SetTags adds the switchId to the put IP a mvlans params
+func (o *PutIPAMvlansParams) SetTags(tags *string) {
+	o.Tags = tags
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PutIPAMvlansParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -309,6 +325,22 @@ func (o *PutIPAMvlansParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		fSwitchID := frSwitchID
 		if fSwitchID != "" {
 			if err := r.SetFormParam("switch_id", fSwitchID); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Tags != nil {
+
+		// form param tags
+		var frTags string
+		if o.Tags != nil {
+			frTags = *o.Tags
+		}
+		fTags := frTags
+		if fTags != "" {
+			if err := r.SetFormParam("tags", fTags); err != nil {
 				return err
 			}
 		}
