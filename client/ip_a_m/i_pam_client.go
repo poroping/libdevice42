@@ -364,7 +364,7 @@ func (a *Client) DeleteIPAMsubnets(params *DeleteIPAMsubnetsParams) (*DeleteIPAM
 		Method:             "DELETE",
 		PathPattern:        "/api/1.0/subnets/{subnet_id}/",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded"},
+		ConsumesMediaTypes: []string{"application/x-www-form-urlencoded"},
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteIPAMsubnetsReader{formats: a.formats},
