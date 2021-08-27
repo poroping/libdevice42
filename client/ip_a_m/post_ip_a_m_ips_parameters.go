@@ -77,6 +77,11 @@ type PostIPAMIpsParams struct {
 
 	*/
 	Ipaddress string
+	/*IPID
+	  ID of IP.
+
+	*/
+	IPID *string
 	/*Label
 	  label for the interface (tag still works for backward compatibility)
 
@@ -97,6 +102,11 @@ type PostIPAMIpsParams struct {
 
 	*/
 	Subnet *string
+	/*SubnetID
+	  name of the subnet ID you want to add the IP to.
+
+	*/
+	SubnetID *string
 	/*Tags
 	  Update IP address tags (note, different than the antiquated tag endpoint. See label parameter above)
 
@@ -197,6 +207,17 @@ func (o *PostIPAMIpsParams) SetIpaddress(ipaddress string) {
 	o.Ipaddress = ipaddress
 }
 
+// WithIPID adds the ip_id to the post IP a m ips params
+func (o *PostIPAMIpsParams) WithIPID(ip_id *string) *PostIPAMIpsParams {
+	o.SetIPID(ip_id)
+	return o
+}
+
+// SetIPID adds the ip_id to the post IP a m ips params
+func (o *PostIPAMIpsParams) SetIPID(ip_id *string) {
+	o.IPID = ip_id
+}
+
 // WithLabel adds the label to the post IP a m ips params
 func (o *PostIPAMIpsParams) WithLabel(label *string) *PostIPAMIpsParams {
 	o.SetLabel(label)
@@ -239,6 +260,17 @@ func (o *PostIPAMIpsParams) WithSubnet(subnet *string) *PostIPAMIpsParams {
 // SetSubnet adds the subnet to the post IP a m ips params
 func (o *PostIPAMIpsParams) SetSubnet(subnet *string) {
 	o.Subnet = subnet
+}
+
+// WithSubnetID adds the subnet_id to the post IP a m ips params
+func (o *PostIPAMIpsParams) WithSubnetID(subnet_id *string) *PostIPAMIpsParams {
+	o.SetSubnetID(subnet_id)
+	return o
+}
+
+// SetSubnetID adds the subnet_id to the post IP a m ips params
+func (o *PostIPAMIpsParams) SetSubnetID(subnet_id *string) {
+	o.SubnetID = subnet_id
 }
 
 // WithTags adds the tags to the post IP a m ips params
@@ -350,6 +382,22 @@ func (o *PostIPAMIpsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		}
 	}
 
+	if o.IPID != nil {
+
+		// form param ip_id
+		var frIPID string
+		if o.IPID != nil {
+			frIPID = *o.IPID
+		}
+		fIPID := frIPID
+		if fIPID != "" {
+			if err := r.SetFormParam("ip_id", fIPID); err != nil {
+				return err
+			}
+		}
+
+	}
+
 	if o.Label != nil {
 
 		// form param label
@@ -408,6 +456,22 @@ func (o *PostIPAMIpsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		fSubnet := frSubnet
 		if fSubnet != "" {
 			if err := r.SetFormParam("subnet", fSubnet); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.SubnetID != nil {
+
+		// form param subnet_id
+		var frSubnetID string
+		if o.SubnetID != nil {
+			frSubnetID = *o.SubnetID
+		}
+		fSubnetID := frSubnetID
+		if fSubnetID != "" {
+			if err := r.SetFormParam("subnet_id", fSubnetID); err != nil {
 				return err
 			}
 		}
